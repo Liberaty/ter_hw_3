@@ -65,6 +65,8 @@ variable "each_vm" {
 
 6. Инициализируйте проект, выполните код.
 
+![2.6.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/2.6.png?raw=true)
+
 ------
 
 ### Задание 3
