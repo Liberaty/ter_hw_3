@@ -35,5 +35,5 @@ resource "yandex_compute_instance" "web" {
     ssh-keys           = "ubuntu:${local.ssh_public_key}" # Добавляем SSH-ключ для пользователя ubuntu
   }
 
-  depends_on = [yandex_compute_instance.db] # Ожидаем создания ВМ из for_each-vm.tf
+  depends_on = [yandex_compute_instance.db, yandex_compute_instance.storage] # Ожидаем создания ВМ из for_each-vm.tf и disk_vm.tf
 }
