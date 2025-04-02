@@ -75,8 +75,11 @@ variable "each_vm" {
 
 ***Ответ:*** Выполнено, вот [ссылка](https://github.com/Liberaty/ter_hw_3/blob/main/disk_vm.tf) на файл.
 
-2. Создайте в том же файле **одиночную**(использовать count или for_each запрещено из-за задания №4) ВМ c именем "storage"  . Используйте блок **dynamic secondary_disk{..}** и мета-аргумент for_each для подключения созданных вами дополнительных дисков.
+2. Создайте в том же файле **одиночную**(использовать count или for_each запрещено из-за задания №4) ВМ c именем "storage". Используйте блок **dynamic secondary_disk{..}** и мета-аргумент for_each для подключения созданных вами дополнительных дисков.
 
+![3.2.1.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/3.2.1.png?raw=true)
+
+![3.2.1.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/3.2.2.png?raw=true)
 ------
 
 ### Задание 4
