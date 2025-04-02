@@ -111,3 +111,32 @@ variable "vm_db_config" {
     }
   ]
 }
+
+variable "vm_storage_config" {
+  type = list(object({
+    name          = string
+    platform_id   = string
+    zone          = string
+    nat_ip        = bool
+    cores         = number
+    memory        = number
+    core_fraction = number
+    hdd_size      = number
+    name_disk     = string
+    hdd_type      = string
+  }))
+  default = [
+    {
+      name          = "storage"
+      platform_id   = "standard-v3"
+      zone          = "ru-central1-a"
+      nat_ip        = true
+      cores         = 2
+      memory        = 2
+      core_fraction = 20
+      hdd_size      = 10
+      name_disk     = "HDD"
+      hdd_type      = "network-hdd"
+    },
+  ]
+}
