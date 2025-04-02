@@ -127,4 +127,4 @@ storage ansible_host=<внешний ip-адрес> fqdn=<полное доме�
 Для зачёта предоставьте код вместе с основной частью задания.
 
 ***Ответ:*** Выполнено, вот [playbook.yaml](https://github.com/Liberaty/ter_hw_3/blob/main/playbook.yml)
-![6.1.png]()
+![6.1.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/6.1.png?raw=true)
