@@ -17,7 +17,6 @@ resource "yandex_compute_instance" "web" {
       image_id  = data.yandex_compute_image.ubuntu.image_id # Ubuntu 20.04 LTS
       size      = var.vm_web_config[count.index].hdd_size
       type      = var.vm_web_config[count.index].hdd_type
-    #   name      = var.vm_web_config[count.index].name_disk
     }
   }
 

@@ -16,7 +16,6 @@ resource "yandex_compute_instance" "db" {
     initialize_params {
       image_id  = data.yandex_compute_image.ubuntu.image_id # Ubuntu 20.04 LTS
       size      = each.value.disk_size
-    #   name      = each.value.name_disk
       type      = each.value.hdd_type
     }
   }
