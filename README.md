@@ -37,6 +37,9 @@
 
 ***Ответ:*** Выполнено, вот [ссылка](https://github.com/Liberaty/ter_hw_3/blob/main/count-vm.tf) на файл.
 
+А про группу безопасности security_group_ids:
+![2.1.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/2.1.png?raw=true)
+
 2. Создайте файл for_each-vm.tf. Опишите в нём создание двух ВМ для баз данных с именами "main" и "replica" **разных** по cpu/ram/disk_volume , используя мета-аргумент **for_each loop**. Используйте для обеих ВМ одну общую переменную типа:
 ```
 variable "each_vm" {
@@ -51,7 +54,15 @@ variable "each_vm" {
 ***Ответ:*** Готово, внутри этого [файла](https://github.com/Liberaty/ter_hw_3/blob/main/variables.tf) находятся переменные для пунктов 2.1 и 2.2, и не только.
 
 4. ВМ из пункта 2.1 должны создаваться после создания ВМ из пункта 2.2
+
+***Ответ:*** Выполнено, показано на скриншоте ниже.
+![2.4.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/2.4.png?raw=true)
+
 5. Используйте функцию file в local-переменной для считывания ключа ~/.ssh/id_rsa.pub и его последующего использования в блоке metadata, взятому из ДЗ 2.
+
+***Ответ:*** Выполнено, показано на скриншоте ниже.
+![2.5.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/2.5.png?raw=true)
+
 6. Инициализируйте проект, выполните код.
 
 ------
