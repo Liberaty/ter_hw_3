@@ -1,6 +1,6 @@
 resource "yandex_compute_disk" "disks" {
   count       = 3
-  name        = "disk-${0 + 1}" # Названия: disk-1, disk-2, disk-3
+  name        = "disk-${count.index + 1}" # Названия: disk-1, disk-2, disk-3
   zone        = "ru-central1-a"
   size        = 1                         # Размер диска в ГБ
   type        = "network-hdd"             # Тип диска
