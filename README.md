@@ -128,3 +128,34 @@ storage ansible_host=<внешний ip-адрес> fqdn=<полное доме�
 
 ***Ответ:*** Выполнено, вот [playbook.yaml](https://github.com/Liberaty/ter_hw_3/blob/main/playbook.yml)
 ![6.1.png](https://github.com/Liberaty/ter_hw_3/blob/main/img/6.1.png?raw=true)
+
+***Корректировки, после проверки***
+
+Чтобы устранить замечания, сделал следующее:
+
+1. Поправил inventory.tftpl, а конкретно блок шаблона storage, чтобы он был унивеслальным, хоть для одиночного объекта, хоть для списка, и теперь он выглядить так.
+```
+%{~ if storage != null ~}
+  %{~ if length(storage) > 0 ~}
+    %{~ for i in storage ~}
+${i["name"]}   ansible_host=${i.network_interface[0].nat_ip_address == "" ? i.network_interface[0].ip_address : i.network_interface[0].nat_ip_address}   fqdn=${i["fqdn"]}
+    %{~ endfor ~}
+  %{~ else ~}
+${storage[0]["name"]}   ansible_host=${storage[0].network_interface[0].nat_ip_address == "" ? storage[0].network_interface[0].ip_address : storage[0].network_interface[0].nat_ip_address}   fqdn=${storage[0]["fqdn"]}
+  %{~ endif ~}
+%{~ endif ~}
+```
+2. Исправил yandex_compute_instance, изменил так, чтобы он обращался к 0 элементу списка просто, count убрал полностью, for_each не использовал: [файл](https://github.com/Liberaty/ter_hw_3/blob/terraform-03/disk_vm.tf)
+
+3. В файле ansible.tf сделал небольшое изменение, yandex_compute_instance.storage обернул в квадратные скобки, чтобы его всегда преобразовывало в список.
+```
+resource "local_file" "inventory" {
+  content = templatefile("${path.module}/inventory.tftpl", {
+    webservers = yandex_compute_instance.web
+    databases  = yandex_compute_instance.db
+    storage    = [yandex_compute_instance.storage]  # Преобразуем одиночный объект в список
+  })
+  filename = "ansible_inventory.ini"
+}
+```
+Ву-аля, всё работает как нужно.
